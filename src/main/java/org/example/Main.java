@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 /**
  * Pattern:
@@ -19,17 +16,36 @@ public class Main {
         List<String> list = new LinkedList<>();
         initialiseList(list);
 
-        Iterator<String> iter = list.iterator();   // get iterator on this list
+        ListIterator<String> iter = list.listIterator();   // get iterator on this list
+
+        // Use Iterator instead of ListIterator if we wish to handle any Collection type.
+
 
         while(iter.hasNext()) {
             String name = iter.next();
             System.out.println(name +",");
         }
         // TODO search for the word "orange"
+        iter = list.listIterator();   // get iterator on this list
+        boolean found = false;
+        while( iter.hasNext() ) {
+            String name = iter.next();
+            if("orange".equals(name)){
+                found = true;
+                break;
+            }
+        }
+        if(found==true)
+            System.out.println("Orange was found");
+        else
+            System.out.println("No orange found");
+
+        // write loop to find an "orange" in the list
+
 
 
         // iterate over the list and remove all "google"s
-        iter = list.iterator();   // get iterator on this list
+        iter = list.listIterator();   // get iterator on this list
 
         while(iter.hasNext()) {
             if( "google".equals(iter.next())) {
@@ -40,7 +56,7 @@ public class Main {
         System.out.println(list);
 
         // reset iterator to start of list and apply lambda to remaining elements
-        iter = list.iterator();
+        iter = list.listIterator();
         iter.forEachRemaining(System.out::println); // supply lambda to be applied to each element
 
         // re-initialize list and reset iterator
