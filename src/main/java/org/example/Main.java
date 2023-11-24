@@ -2,6 +2,7 @@ package org.example;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -15,11 +16,33 @@ public class Main {
     public static void main(String[] args) {
         System.out.println("Using Iterator interface to remove item from list while traversing it.");
 
-        List<String> list = new ArrayList<>();
+        List<String> list = new LinkedList<>();
         initialiseList(list);
 
+        Iterator<String> iter = list.iterator();   // get iterator on this list
+
+        while(iter.hasNext()) {
+            String name = iter.next();
+            System.out.println(name +",");
+        }
+        // TODO search for the word "orange"
+        iter = list.iterator();   // get iterator on this list
+        boolean found = false;
+        while(iter.hasNext()) {
+            String name = iter.next();
+            if("orange".equals(name)){
+                found = true;
+                break;
+            }
+        }
+        if(found==true)
+            System.out.println("Orange was found");
+        else
+            System.out.println("No orange found");
+
+
         // iterate over the list and remove all "google"s
-        Iterator iter = list.iterator();   // get iterator on this list
+        iter = list.iterator();   // get iterator on this list
 
         while(iter.hasNext()) {
             if( "google".equals(iter.next())) {
