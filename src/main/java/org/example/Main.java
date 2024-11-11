@@ -1,4 +1,4 @@
-package org.example;
+package org.example;        // Nov 2024
 
 import java.util.*;
 
@@ -20,13 +20,15 @@ public class Main {
 
         // Use Iterator instead of ListIterator if we wish to handle any Collection type.
 
+        // Your lecturer will explain the concept of an Iterator
 
         while(iter.hasNext()) {
             String name = iter.next();
             System.out.println(name +",");
         }
+
         // TODO search for the word "orange"
-        iter = list.listIterator();   // get iterator on this list
+        iter = list.listIterator();   // refresh iterator on this list
         boolean found = false;
         while( iter.hasNext() ) {
             String name = iter.next();
@@ -45,7 +47,7 @@ public class Main {
 
 
         // iterate over the list and remove all "google"s
-        iter = list.listIterator();   // get iterator on this list
+        iter = list.listIterator();   // refresh iterator on this list
 
         while(iter.hasNext()) {
             if( "google".equals(iter.next())) {
@@ -63,14 +65,14 @@ public class Main {
         list.clear();
         initialiseList( list );
 
-        // attempt to remove "google"s using for/while loops
+        // attempt to remove "google"s using for/while loops,
         // this approach is a bit more cumbersome
         System.out.println("Remove \"google\"s using for loop");
         for(int i=0; i<list.size(); i++)
         {
             if("google".equals(list.get(i))) {
                 list.remove(i);
-                i--;    // need to decrement the index
+                i--;    // need to decrement the index, else element will be skipped
             }
         }
         System.out.println(list);
